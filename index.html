@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo de advinhação</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Jogo de adivinhação</h1>
-    <p>Eu escolhi um número entre 1 e 100. Tente adivinhar em até 5 tentativas!</p>
-    <p>Clique em Iniciar Jogo para começar!</p>
-    <button onclick="iniciarJogo()">Iniciar Jogo</button>
-    <p id="inicio" style="color: steelblue;"></p>
-    <p id="ja_usou"></p>
-    <p id="restam"></p>
-    <p>------------------------------------------------------------------------------------------</p>
-    <p>Insira o seu palpite:</p>
-    <input type="number" id="palpite" min="1" max="100">
-    <button id="botao_adv" onclick="advinharNumero()">Adivinhar</button>
-    <p id="resultado"></p>
-    <p>
-        <button onclick="Reiniciar()">Jogar novamente</button>
-    </p>
+    <div>
+        <h1>Jogo de adivinhação</h1>
+        <h2>Tente Advinhar o número de 1 a 100 que o pc pensou...</h2>
+        Seu Palpite: <input type="number" name="palpite" id="palpite" placeholder="Palpite...">
+        <div>
+            <p id="feedback"></p>
+        </div>
+        <div>
+            <p id="tentativas">Tentativas restantes: </p>
+        </div>
+        <div>
+            <select name="historico" id="historico" size="10" style="width: 200px;">
+                <option value="historico">Seu historico:</option>
+            </select>
+        </div>
+        <input type="button" value="Adivinhar" onclick="Adivinhar()">
+        <input type="button" value="Novo Jogo" onclick="NovoJogo()">
+    </div>
+    <footer>
+        <p>By @rogin_dev&#x2764;</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
