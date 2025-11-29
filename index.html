@@ -7,23 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <h1>Jogo de adivinhação</h1>
-        <h2>Tente Advinhar o número de 1 a 100 que o pc pensou...</h2>
-        Seu Palpite: <input type="number" name="palpite" id="palpite" placeholder="Palpite...">
-        <div>
-            <p id="feedback"></p>
+    <div class="container">
+        <div class="coluna principal">
+            <div class="item">
+                <h1>Jogo de adivinhação</h1>
+                <h2>Tente Advinhar o número de 1 a 100 que o pc pensou...</h2>
+                Seu Palpite: <input type="number" name="palpite" id="palpite" placeholder="Palpite...">
+            </div>
+            <div class="item">
+                <input type="button" value="Adivinhar" id="adv" onclick="Adivinhar()">
+                <input type="button" value="Novo Jogo" id="newg" onclick="NovoJogo()">
+            </div>
+            <div class="item">
+                <p id="feedback"></p>
+            </div>
         </div>
-        <div>
-            <p id="tentativas">Tentativas restantes: 10</p>
+        <div class="coluna lateral">
+            <div class="item">
+                <p id="tentativas">Tentativas restantes: 10</p>
+                <select name="historico" id="historico" size="10" style="width: 280px;">
+                    <option value="historico">Seu historico:</option>
+                </select>
+            </div>
         </div>
-        <div>
-            <select name="historico" id="historico" size="10" style="width: 280px;">
-                <option value="historico">Seu historico:</option>
-            </select>
-        </div>
-        <input type="button" value="Adivinhar" id="adv" onclick="Adivinhar()">
-        <input type="button" value="Novo Jogo" id="newg" onclick="NovoJogo()">
     </div>
     <p>Info: ainda tô desenvolvendo o estilo...</p>
     <footer>

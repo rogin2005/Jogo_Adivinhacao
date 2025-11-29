@@ -16,7 +16,6 @@ function Adivinhar() {
     let segundo = horario.getSeconds()
     let palpnum = Number(palptxt.value)
     
-    console.log('o numero secreto é: '+pc)
     if (palpnum < 1 || palpnum > 100) {
         alert('Digite um número entre 1 e 100 para iniciar!')
     } else {
@@ -52,5 +51,4 @@ function NovoJogo() {
     feedtxt.innerHTML = "Novo Jogo iniciou, pode fazer seu palpite! &#x1F47E;"
     botaoadv.disabled = false
     botaonew.disabled = true
-    console.log('novoJogo definiu como: '+pc)
 }
