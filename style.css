@@ -1,7 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: oklch(37.2% 0.044 257.287);
-    color: white;
+    color: black;
 }
 
 .container {
@@ -9,23 +9,37 @@ body {
     gap: 10px 10px;
     background-color: oklch(72.3% 0.219 149.579);
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: center;
-    height: 600px;
-    padding-left: 600px;
+    height: 100vh;
+    height: 100dvh;
+    width: 200dvh;
+    width: 200vh;
 }
 
 .coluna {
-    width: 400px;
+    width: 100vh;
+    width: 100dvh;
+    height: 50vh;
+    height: 50dvh;
 }
 
 .item {
-    height: 200px;
+    margin-bottom: 20px;
+}
+
+.select {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.del {
+    flex-shrink: 3;
 }
 
 .principal {
     align-self: center;
-    gap: 50px;
+    flex-grow: 2;
 }
 
 
