@@ -23,7 +23,6 @@ function Adivinhar() {
     if (palpnum < 1 || palpnum > 100) {
         alert('Digite um número entre 1 e 100 para iniciar!')
     } else if (tentativas) {
-        console.log('o numero é: ' + pc)
         if (palpnum > pc) {
             feedtxt.innerHTML = "Ops, seu palpite foi alto, tente um número mais baixo...&#x2B07;"
             tentativas -= 1
