@@ -11,25 +11,23 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    position: relative;
+    width: 99%;
+    padding-left: 5px;
+    padding-right: 5px;
     height: 100vh;
     height: 100dvh;
 }
 
 .coluna {
-    height: 100vh;
-    height: 100dvh;
+    height: 90vh;
+    height: 90dvh;
+    max-width: 100vh;
+    max-width: 100dvh;
+    min-width: 10vh;
+    min-width: 10dvh;
 }
 
 .item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-.principal {
-    align-self: center;
-    flex-grow: 1;
-}
-
-.lateral {
-    align-self: flex-start;
-}

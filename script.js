@@ -28,14 +28,14 @@ function Adivinhar() {
         } else {
             // acertou
             feedtxt.innerHTML = "Parabéns, você conseguiu acertar o número secreto! &#x1F389;&#x1F389;&#x1F389;"
-            sel.innerHTML += `<option>Jogador ganhou a partida às ${hora}:${minuto}:${segundo}&#x1F60E;</option>`
+            sel.innerHTML += `<option>Ganhou às ${hora}:${minuto}:${segundo}&#x1F60E;</option>`
             botaoadv.disabled = true
             botaonew.disabled = false
         }
         if (tentativas == 0) {
             // acabou as tentativas
             feedtxt.innerHTML = "Ah que pena, dessa vez o pc venceu, que tal tentar novamente? &#x1F614;"
-            sel.innerHTML += `<option>Jogador perdeu a partida às ${hora}:${minuto}:${segundo}&#x1F614;</option>`
+            sel.innerHTML += `<option>Perdeu às ${hora}:${minuto}:${segundo}&#x1F614;</option>`
             botaoadv.disabled = true
             botaonew.disabled = false
         }
