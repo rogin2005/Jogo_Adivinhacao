@@ -34,7 +34,7 @@ function Adivinhar() {
         if (palpnum == pc) {
             // acertou
             feedtxt.innerHTML = "Parabéns, você conseguiu acertar o número secreto! &#x1F389;&#x1F389;&#x1F389;"
-            sel.innerHTML += `<option>Jogador ganhou a partida às ${hora}:${minuto}:${segundo}&#x1F60E;</option>`
+            sel.innerHTML += `<option>Ganhou às ${hora}:${minuto}:${segundo}&#x1F60E;</option>`
             botaoadv.disabled = true
             botaonew.disabled = false
 
