@@ -7,38 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container"> <!-- inicio container -->
-
-        <div class="coluna principal">
+    <div class="container">
+        <div class="coluna">
             <div class="item">
                 <h1>Jogo de adivinhação</h1>
-                <h3>Tente Advinhar o número de 1 a 100 que o pc pensou...</h3>
+                <h2>Tente Advinhar o número de 1 a 100 que o pc pensou...</h2>
+                <p id="tentativas">Tentativas restantes: 10</p>
                 Seu Palpite: <input type="number" name="palpite" id="palpite" placeholder="Palpite...">
             </div>
             <div class="item">
-                <input type="button" class="botao" value="Adivinhar" id="adv" onclick="Adivinhar()">
-                <input type="button" class="botao" value="Novo Jogo" id="newg" onclick="NovoJogo()">
+                <input type="button" value="Adivinhar" id="adv" onclick="Adivinhar()">
+                <input type="button" value="Novo Jogo" id="newg" onclick="NovoJogo()">
             </div>
             <div class="item">
                 <p id="feedback"></p>
             </div>
-        </div>
-
-        <div class="coluna lateral">
             <div class="item">
                 <select name="historico" id="historico" size="10" style="width: 160px;">
                     <option value="historico">Seu historico:</option>
                 </select>
             </div>
         </div>
-
-    </div> <!-- fim container -->
-
+    </div>
     <footer>
-        <p>By @rogin_dev&hearts;</p>
+        <p>By @rogin_dev&#x2764;</p>
     </footer>
-
     <script src="script.js"></script>
-
 </body>
 </html>
