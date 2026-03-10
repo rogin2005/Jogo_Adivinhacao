@@ -12,7 +12,6 @@ body {
 .container {
     margin: 0 auto;
     background-color: oklch(72.3% 0.219 149.579);
-    border: 1px solid red;
     border-radius: 1rem;
     padding: 5px 20px 20px 20px;
     gap: 20px;
@@ -37,4 +36,22 @@ body {
     display: flex;
     justify-content: end;
     align-items: start;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 1rem;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'principal'
+            'lateral'
+        ;
+    }
 }
