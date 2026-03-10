@@ -38,6 +38,16 @@ body {
     align-items: start;
 }
 
+#palpite {
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+#historico {
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
 .botao {
     border-radius: 1rem;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
