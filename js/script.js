@@ -2,8 +2,8 @@ const sel = document.querySelector('select#historico')
 const palptxt = document.querySelector('input#palpite')
 const feedtxt = document.querySelector('p#feedback')
 const tentxt = document.querySelector('p#tentativas')
-const botaoadv = document.querySelector('input#adv')
-const botaonew = document.querySelector('input#newg')
+const botaoadv = document.querySelector('button#adv')
+const botaonew = document.querySelector('button#newg')
 let pc = Math.floor(Math.random() * 100) + 1;
 let tentativas = 10
 

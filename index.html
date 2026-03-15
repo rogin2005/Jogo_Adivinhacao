@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo de advinhação</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="container"> <!-- inicio container -->
+    <div class="container-principal"> <!-- inicio container -->
 
         <div class="coluna principal">
             <div class="item">
-                <h1>Jogo de adivinhação</h1>
-                <h3>Tente Advinhar o número de 1 a 100 que o pc pensou...</h3>
+                <h1 class="display-4">Jogo de adivinhação</h1>
+                <h3 class="display-6">Tente Advinhar o número de 1 a 100 que o pc pensou...</h3>
                 Seu Palpite: <input type="number" name="palpite" id="palpite" placeholder="Palpite...">
             </div>
             <div class="item">
-                <input type="button" class="botao" value="Adivinhar" id="adv" onclick="Adivinhar()">
-                <input type="button" class="botao" value="Novo Jogo" id="newg" onclick="NovoJogo()">
+                <!-- <input type="button" class="botao" value="Adivinhar" id="adv" onclick="Adivinhar()">
+                <input type="button" class="botao" value="Novo Jogo" id="newg" onclick="NovoJogo()"> -->
+                <button class="botao" id="adv" onclick="Adivinhar()">Adivinhar</button>
+                <button class="botao" id="newg" onclick="NovoJogo()">Novo Jogo</button>
             </div>
             <div class="item">
                 <p id="feedback"></p>
@@ -27,9 +32,39 @@
         <div class="coluna lateral">
             <div class="item">
                 <p id="tentativas">Tentativas restantes: 10</p>
-                <select name="historico" id="historico" size="10" style="width: 280px;">
+                <!-- <select name="historico" id="historico" size="10" style="width: 280px;">
                     <option value="historico">Seu historico:</option>
-                </select>
+                </select> -->
+                <div class="container mt-5">
+                    <p>Histórico:</p>
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <ol type="1">
+                                <li>- teste 1✅</li>
+                                <li>- teste 2✅</li>
+                                <li>- teste 3✅</li>
+                                <li>- teste 1✅</li>
+                                <li>- teste 2✅</li>
+                                <li>- teste 3✅</li>
+                                <li>- teste 1✅</li>
+                                <li>- teste 2✅</li>
+                                <li>- teste 3✅</li>
+                                <li>- teste 1✅</li>
+                                <li>- teste 2✅</li>
+                                <li>- teste 3✅</li>
+                                <li>- teste 1✅</li>
+                                <li>- teste 2✅</li>
+                                <li>- teste 3✅</li>
+                                <li>- teste 1✅</li>
+                                <li>- teste 2✅</li>
+                                <li>- teste 3✅</li>
+                                <li>- Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui enim modi quae laudantium fugit ad rerum deserunt quam maiores natus minima nihil officiis voluptates cum id ea, labore eligendi culpa!</li>
+                                <li>- teste 2✅</li>
+                                <li>- teste 3✅</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -39,7 +74,8 @@
         <p>By @rogin_dev&hearts;</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>

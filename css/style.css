@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&display=swap');
+
+body {
+    font-family: "Bitcount Prop Double", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    background-color: #184e77;
+    color: black;
+    padding: 1rem;
+}
+
+.display-4,
+.display-6 {
+    font-weight: 600;
+}
+
+.container-principal {
+    margin: 0 auto;
+    background-color: #34a0a4;
+    border-radius: 1rem;
+    padding: 2rem;
+    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        'principal lateral'
+    ;
+}
+
+
+.item {
+    margin-bottom: 20px;
+}
+
+.principal {
+    grid-area: principal;
+}
+
+.lateral {
+    grid-area: lateral;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+#palpite {
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+#historico {
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+}
+
+input[type="number"]:focus {
+    border-color: #667eea;
+}
+
+/* .botao {
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    width: 100px;
+    height: 40px;
+    font-size: 1.1rem;
+    background-color: #184e77;
+    transition: background-color 0.5s ease;
+}
+
+.botao:hover {
+    background-color: #00b4d8;
+} */
+
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.custom-card {
+    background-color: rgba(255, 255, 255, 0.116);
+    border: none;
+    width: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.custom-card ol {
+    padding-left: 3.5rem;
+}
+
+.custom-card li {
+    color: rgb(64, 83, 204);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.8;
+    transition: transform 0.3s ease;
+}
+
+.custom-card li:hover {
+    transform: scale(1.1);
+    color: #df0fd4;
+}
+
+.custom-card::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-card::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.custom-card::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+footer {
+    color: white;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 1rem;
+    }
+
+    .container-principal {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'principal'
+            'lateral'
+        ;
+    }
+}
