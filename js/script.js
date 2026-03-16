@@ -1,4 +1,4 @@
-const sel = document.querySelector('select#historico')
+const hist = document.querySelector('ul#historico')
 const palptxt = document.querySelector('input#palpite')
 const feedtxt = document.querySelector('p#feedback')
 const tentxt = document.querySelector('p#tentativas')
@@ -7,9 +7,12 @@ const botaonew = document.querySelector('button#newg')
 let pc = Math.floor(Math.random() * 100) + 1;
 let tentativas = 10
 
+botaoadv.addEventListener('click', adivinhar)
+botaonew.addEventListener('click', novoJogo)
+
 botaonew.disabled = true
 
-function Adivinhar() {
+function adivinhar() {
     let horario = new Date()
     let hora = horario.getHours()
     let minuto = horario.getMinutes()
@@ -23,18 +26,19 @@ function Adivinhar() {
     if (palpnum < 1 || palpnum > 100) {
         alert('Digite um número entre 1 e 100 para iniciar!')
     } else if (tentativas) {
-        if (palpnum > pc) {
+        if (palpnum > pc) { // palpite maior
             feedtxt.innerHTML = "Ops, seu palpite foi alto, tente um número mais baixo...&#x2B07;"
             tentativas -= 1
-        } 
-        if (palpnum < pc) {
+        }
+        if (palpnum < pc) { // palpite menor
             feedtxt.innerHTML = "Ops, seu palpite foi baixo, tente um número mais alto...&#x2B06;"
             tentativas -= 1
         } 
         if (palpnum == pc) {
             // acertou
             feedtxt.innerHTML = "Parabéns, você conseguiu acertar o número secreto! &#x1F389;&#x1F389;&#x1F389;"
-            sel.innerHTML += `<option>Ganhou às ${hora}:${minuto}:${segundo}&#x1F60E;</option>`
+            hist.innerHTML += `<li>User ganhou!</li>`
+            /* sel.innerHTML += `<option>Ganhou às ${hora}:${minuto}:${segundo}&#x1F60E;</option>` */
             botaoadv.disabled = true
             botaonew.disabled = false
 
@@ -45,7 +49,8 @@ function Adivinhar() {
             botaonew.disabled = false
             feedtxt.innerHTML = "Ah que pena, dessa vez o pc venceu, que tal tentar novamente? &#x1F614;"
             tentxt.innerHTML = `Tentativas restantes: 0`
-            sel.innerHTML += `<option>Perdeu às ${hora}:${minuto}:${segundo}&#x1F614;</option>`
+            hist.innerHTML += `<li>User perdeu!</li>`
+            /* sel.innerHTML += `<option>Perdeu às ${hora}:${minuto}:${segundo}&#x1F614;</option>` */
         }
         tentxt.innerHTML = `Tentativas restantes: ${tentativas}`
     }
@@ -53,7 +58,7 @@ function Adivinhar() {
     //sel.innerHTML += `<option>User clicou em ${hora}:${minuto}:${segundo}</option>`
 }
 
-function NovoJogo() {
+function novoJogo() {
     pc = Math.floor(Math.random() * 100) + 1;
     tentativas = 10
     tentxt.innerHTML = "Tentativas restantes: 10"

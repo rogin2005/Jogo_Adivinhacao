@@ -16,6 +16,7 @@ body {
 
 .container-principal {
     margin: 0 auto;
+    max-height: 100vh;
     background-color: #34a0a4;
     border-radius: 1rem;
     padding: 2rem;
@@ -48,14 +49,6 @@ body {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-#historico {
-    border-radius: 0.5rem;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    background: rgba(255, 255, 255, 0.1);
-    padding: 5px 10px;
-    margin: 5px 0;
-}
-
 input[type="number"] {
     padding: 10px;
     border: 2px solid #ddd;
@@ -83,7 +76,7 @@ input[type="number"]:focus {
 } */
 
 button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%, #423baaed 100%);
     border: none;
     color: white;
     padding: 10px 20px;
@@ -100,13 +93,12 @@ button:hover {
 .custom-card {
     background-color: rgba(255, 255, 255, 0.116);
     border: none;
-    width: 100%;
     max-width: 400px;
-    max-height: 400px;
+    max-height: 370px;
     overflow-y: auto;
 }
 
-.custom-card ol {
+.custom-card ul {
     padding-left: 3.5rem;
 }
 
@@ -120,7 +112,7 @@ button:hover {
 
 .custom-card li:hover {
     transform: scale(1.1);
-    color: #df0fd4;
+    color: #2b2390;
 }
 
 .custom-card::-webkit-scrollbar {
