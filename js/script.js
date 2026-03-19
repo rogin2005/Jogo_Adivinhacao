@@ -13,6 +13,7 @@ botaonew.addEventListener('click', novoJogo)
 botaonew.disabled = true
 
 function adivinhar() {
+    console.log('numero', pc)
     let horario = new Date()
     let hora = horario.getHours()
     let minuto = horario.getMinutes()
@@ -26,23 +27,52 @@ function adivinhar() {
     if (palpnum < 1 || palpnum > 100) {
         alert('Digite um número entre 1 e 100 para iniciar!')
     } else if (tentativas) {
-        if (palpnum > pc) { // palpite maior
+        /* if (palpnum > pc) { // palpite maior
             feedtxt.innerHTML = "Ops, seu palpite foi alto, tente um número mais baixo...&#x2B07;"
+            hist.innerHTML += `<li> </li>`
             tentativas -= 1
+        } */
+
+       // maior
+        if (palpnum > (pc + 10)) { // palpite com diferença de +10 positivo - congelando
+            tentativas -= 1
+            feedtxt.innerHTML = `Tá Congelando!`
+        } else if (palpnum >= (pc + 5) && palpnum <= (pc + 10)) { // palpite com diferença entre 10 e 5 positivo - morno
+            tentativas -= 1
+            feedtxt.innerHTML = `Tá Morno!`
+        } else if (palpnum >= (pc + 1) && palpnum <= (pc + 4)) { // palpite com diferença entre 4 e 1 positivo - pegando fogo
+            tentativas -= 1
+            feedtxt.innerHTML = `Tá Pegando Fogo!`
         }
-        if (palpnum < pc) { // palpite menor
-            feedtxt.innerHTML = "Ops, seu palpite foi baixo, tente um número mais alto...&#x2B06;"
+
+        // historico
+        if (palpnum > pc) {
+            hist.innerHTML += `<li>&#x2B06 ${palpnum} (alto)</li>`
+        } else if (palpnum < pc) {
+            hist.innerHTML += `<li>&#x2B07 ${palpnum} (baixo)</li>`
+        }
+
+        // menor
+        if (palpnum < (pc - 10)) { // palpite com diferença de -10 negativo - congelando
             tentativas -= 1
-        } 
+            feedtxt.innerHTML = `Tá Congelando!`
+        } else if (palpnum <= (pc - 5) && palpnum >= (pc - 10)) { // palpite com diferença entre 10 e 5 negativo - morno
+            tentativas -= 1
+            feedtxt.innerHTML = `Tá Morno!`
+        } else if (palpnum <= (pc - 1) && palpnum >= (pc - 4)) { // palpite com diferença entre 4 e 1 negativo - pegando fogo
+            tentativas -= 1
+            feedtxt.innerHTML = `Tá Pegando Fogo!`
+        }
+
         if (palpnum == pc) {
             // acertou
             feedtxt.innerHTML = "Parabéns, você conseguiu acertar o número secreto! &#x1F389;&#x1F389;&#x1F389;"
-            hist.innerHTML += `<li>User ganhou!</li>`
+            hist.innerHTML += `<li>&#x2705 ${palpnum} (acertou!) - ${hora}:${minuto}:${segundo}&#x1F60E;</li>`
             /* sel.innerHTML += `<option>Ganhou às ${hora}:${minuto}:${segundo}&#x1F60E;</option>` */
             botaoadv.disabled = true
             botaonew.disabled = false
 
-        } 
+        }
         if (tentativas == 0) {
             // acabou as tentativas
             botaoadv.disabled = true
@@ -55,7 +85,6 @@ function adivinhar() {
         tentxt.innerHTML = `Tentativas restantes: ${tentativas}`
     }
 
-    //sel.innerHTML += `<option>User clicou em ${hora}:${minuto}:${segundo}</option>`
 }
 
 function novoJogo() {
