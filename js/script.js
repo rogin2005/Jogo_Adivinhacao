@@ -6,9 +6,18 @@ const botaoadv = document.querySelector('button#adv')
 const botaonew = document.querySelector('button#newg')
 let pc = Math.floor(Math.random() * 100) + 1;
 let tentativas = 10
+let endGame = false //controla se o jogo está ativo
 
 botaoadv.addEventListener('click', adivinhar)
 botaonew.addEventListener('click', novoJogo)
+
+palptxt.addEventListener('keydown', function(event) { //evento enter no campo de palpite chama adivinhar()
+    if(event.key === 'Enter') {
+        if(!endGame) {
+            adivinhar()
+        }
+    }
+})
 
 botaonew.disabled = true
 botaonew.style.display = 'none' //esconde o botão - 'none' esconde - 'block' mostra
@@ -72,6 +81,7 @@ function adivinhar() {
             botaonew.disabled = false
             botaonew.style.display = 'block' //mostra o botão new game
             botaoadv.style.display = 'none' //esconde o botão adv
+            endGame = true //acabou o jogo
         }
         if (tentativas == 0) {
             // acabou as tentativas
@@ -82,6 +92,7 @@ function adivinhar() {
             feedtxt.innerHTML = "Ah que pena, dessa vez o pc venceu, que tal tentar novamente? &#x1F614;"
             tentxt.innerHTML = `Tentativas restantes: 0`
             hist.innerHTML += `<li tabindex="-1">&#x274C O número secreto era: ${pc}</li>`
+            endGame = true //acabou o jogo
             /* sel.innerHTML += `<option>Perdeu às ${hora}:${minuto}:${segundo}&#x1F614;</option>` */
         }
         lista.scrollIntoView({ behavior: 'smooth', block: 'end' }); // sempre rola a lista historico para baixo
@@ -99,4 +110,5 @@ function novoJogo() {
     botaonew.disabled = true
     botaonew.style.display = 'none'
     botaoadv.style.display = 'block'
+    endGame = false
 }
