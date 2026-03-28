@@ -30,12 +30,12 @@ function adivinhar() {
     let segundo = horario.getSeconds()
     let palpnum = Number(palptxt.value)
     let lista = document.querySelector('ul#historico');
+    let liHistorico = document.createElement('li')
     let imgCongelando = `<img src="./assets/congelando-100.png" alt="img congelando">`
     let imgMorno = `<img src="./assets/medio-100.png" alt="img morno">`
     let imgFogo = `<img src="./assets/pegando-fogo-100.png" alt="img pegando fogo">`
     let msgToast
 
-    palptxt.classList.add('pulsar')
 
     if (tentativas == 0) {
         tentativas = false
@@ -44,6 +44,8 @@ function adivinhar() {
     if (palpnum < 1 || palpnum > 100) { // se o número não estiver entre 1 e 100
         alert('Digite um número entre 1 e 100 para iniciar!')
     } else if (tentativas) { // se ainda existir tentativas será feito os testes
+
+        palptxt.classList.add('pulsar') // pulsar no input
 
         // maior
         if (palpnum > (pc + 10)) { // palpite com diferença de +10 positivo - congelando
@@ -61,10 +63,12 @@ function adivinhar() {
         }
 
         // historico
-        if (palpnum > pc) {
-            hist.innerHTML += `<li tabindex="-1">&#x2B06 ${palpnum} (alto)</li>`
-        } else if (palpnum < pc) {
-            hist.innerHTML += `<li tabindex="-1">&#x2B07 ${palpnum} (baixo)</li>`
+        if (palpnum > pc) { // palpite alto
+            //hist.innerHTML += `<li>&#x2B06 ${palpnum} (alto)</li>`
+            liHistorico.innerHTML = `&#x2B06 ${palpnum} (alto)`
+        } else if (palpnum < pc) { // palpite baixo
+            //hist.innerHTML += `<li>&#x2B07 ${palpnum} (baixo)</li>`
+            liHistorico.innerHTML = `&#x2B07 ${palpnum} (baixo)` 
         }
 
         // menor
@@ -83,11 +87,10 @@ function adivinhar() {
         }
 
         if (palpnum == pc) {
-            // acertou
+            // acertou - ganhou
             feedtxt.innerHTML = "Parabéns, você conseguiu acertar o número secreto! &#x1F389;&#x1F389;&#x1F389;"
             msgToast = "Parabéns, você Ganhou! &#x1F389;&#x1F389;&#x1F389;"
-            hist.innerHTML += `<li tabindex="-1">&#x2705 ${palpnum} (acertou!) - ${hora}:${minuto}:${segundo}&#x1F60E;</li>`
-            /* sel.innerHTML += `<option>Ganhou às ${hora}:${minuto}:${segundo}&#x1F60E;</option>` */
+            liHistorico.innerHTML = `&#x2705 ${palpnum} (acertou!) - ${hora}:${minuto}:${segundo}&#x1F60E;`
             botaoadv.disabled = true
             botaonew.disabled = false
             botaonew.style.display = 'block' //mostra o botão new game
@@ -95,7 +98,7 @@ function adivinhar() {
             endGame = true //acabou o jogo
         }
         if (tentativas == 0) {
-            // acabou as tentativas
+            // acabou as tentativas - perdeu
             botaoadv.disabled = true
             botaonew.disabled = false
             botaonew.style.display = 'block'
@@ -103,10 +106,11 @@ function adivinhar() {
             feedtxt.innerHTML = "Ah que pena, dessa vez o pc venceu, que tal tentar novamente? &#x1F614;"
             msgToast = "Ah que pena, dessa vez o pc venceu &#x1F614;"
             tentxt.innerHTML = `Tentativas restantes: 0`
-            hist.innerHTML += `<li tabindex="-1">&#x274C O número secreto era: ${pc}</li>`
+            liHistorico.innerHTML = `&#x274C O número secreto era: ${pc}`
             endGame = true //acabou o jogo
-            /* sel.innerHTML += `<option>Perdeu às ${hora}:${minuto}:${segundo}&#x1F614;</option>` */
         }
+        hist.appendChild(liHistorico)
+        liHistorico.classList.add('novo-item')
         lista.scrollIntoView({ behavior: 'smooth', block: 'end' }); // sempre rola a lista historico para baixo
         tentxt.innerHTML = `Tentativas restantes: ${tentativas}`
         toastDiv.innerHTML = msgToast
@@ -116,7 +120,8 @@ function adivinhar() {
     setTimeout(() => {
         palptxt.classList.remove('pulsar')
         toastDiv.classList.remove('show')
-    }, 1000);
+        liHistorico.classList.remove('novo-item')
+    }, 1500);
 
 }
 
