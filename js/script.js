@@ -12,13 +12,49 @@ let endGame = false //controla se o jogo está ativo
 botaoadv.addEventListener('click', adivinhar)
 botaonew.addEventListener('click', novoJogo)
 
-palptxt.addEventListener('keydown', function(event) { //evento enter no campo de palpite chama adivinhar()
-    if(event.key === 'Enter') {
-        if(!endGame) {
+palptxt.addEventListener('keydown', function (event) { //evento enter no campo de palpite chama adivinhar()
+    if (event.key === 'Enter') {
+        if (!endGame) {
             adivinhar()
         }
     }
 })
+
+
+const audio = new Audio('../assets/azazel-cant-stop-coming.mp3');
+audio.loop = true;   // repetir infinitamente
+audio.volume = 0.5;  // volume inicial (0 a 1)
+
+let musicaAtiva = true;
+
+// Tenta tocar assim que carrega
+window.onload = function () {
+    audio.play().then(() => {
+        console.log("Reprodução automática iniciada!");
+    }).catch(error => {
+        console.log("Autoplay bloqueado pelo navegador. Aguardando interação.");
+
+        // Se bloqueado, adiciona um evento de clique para tocar
+        document.addEventListener('click', () => {
+            audio.play();
+            console.log('reprodução iniciada manualmente')
+        }, { once: true }); // Executa apenas uma vez
+    });
+};
+
+// Vincular ao botão
+const btn = document.getElementById('toggle-music');
+btn.addEventListener('click', () => {
+    if (musicaAtiva) {
+        audio.pause();
+        btn.textContent = '🔇 Música';
+    } else {
+        audio.play();
+        btn.textContent = '🔊 Música';
+    }
+    musicaAtiva = !musicaAtiva;
+});
+
 
 botaonew.disabled = true
 botaonew.style.display = 'none' //esconde o botão - 'none' esconde - 'block' mostra
@@ -68,7 +104,7 @@ function adivinhar() {
             liHistorico.innerHTML = `&#x2B06 ${palpnum} (alto)`
         } else if (palpnum < pc) { // palpite baixo
             //hist.innerHTML += `<li>&#x2B07 ${palpnum} (baixo)</li>`
-            liHistorico.innerHTML = `&#x2B07 ${palpnum} (baixo)` 
+            liHistorico.innerHTML = `&#x2B07 ${palpnum} (baixo)`
         }
 
         // menor
