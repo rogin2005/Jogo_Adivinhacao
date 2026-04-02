@@ -62,6 +62,16 @@ body {
     padding: 10px;
 }
 
+#author {
+    text-decoration: none;
+    color: white;
+}
+
+#author:hover {
+    color: red;
+    text-decoration: underline;
+}
+
 /* efeito de pulso no input */
 .pulsar {
   outline: 3px solid transparent;

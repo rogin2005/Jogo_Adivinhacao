@@ -30,14 +30,14 @@ let musicaAtiva = true;
 // Tenta tocar assim que carrega
 window.onload = function () {
     audio.play().then(() => {
-        console.log("Reprodução automática iniciada!");
+        //console.log("Reprodução automática iniciada!");
     }).catch(error => {
-        console.log("Autoplay bloqueado pelo navegador. Aguardando interação.");
+        //console.log("Autoplay bloqueado pelo navegador. Aguardando interação.");
 
         // Se bloqueado, adiciona um evento de clique para tocar
         document.addEventListener('click', () => {
             audio.play();
-            console.log('reprodução iniciada manualmente')
+            //console.log('reprodução iniciada manualmente')
         }, { once: true }); // Executa apenas uma vez
     });
 };
@@ -47,10 +47,10 @@ const btn = document.getElementById('toggle-music');
 btn.addEventListener('click', () => {
     if (musicaAtiva) {
         audio.pause();
-        btn.textContent = '🔇 Música';
+        btn.innerHTML = '&#x1F507'; // emoji silenciado
     } else {
         audio.play();
-        btn.textContent = '🔊 Música';
+        btn.innerHTML = '&#x1F50A'; // emoji volume alto
     }
     musicaAtiva = !musicaAtiva;
 });
