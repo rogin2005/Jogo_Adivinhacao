@@ -59,6 +59,43 @@ btn.addEventListener('click', () => {
 botaonew.disabled = true
 botaonew.style.display = 'none' //esconde o botão - 'none' esconde - 'block' mostra
 
+
+function createCloud() {
+  const sky = document.getElementById('sky');
+  const cloud = document.createElement('div');
+  cloud.className = 'cloud';
+  
+  // Tamanhos e posições aleatórias
+  const size = Math.random() * 150 + 100;
+  cloud.style.width = `${size}px`;
+  cloud.style.height = `${size * 0.6}px`;
+  cloud.style.top = `${Math.random() * 50}%`; // Nuvens na parte superior
+  cloud.style.left = `-200px`; // Começa fora da tela à esquerda
+
+  sky.appendChild(cloud);
+
+  // Animação com JS (ou pode usar CSS Animations)
+  let position = -200;
+  const speed = Math.random() * 1 + 0.5; // Velocidades variadas
+
+  function move() {
+    position += speed;
+    cloud.style.left = `${position}px`;
+
+    if (position < window.innerWidth) {
+      requestAnimationFrame(move);
+    } else {
+      cloud.remove(); // Remove ao sair da tela para poupar memória
+    }
+  }
+
+  move();
+}
+
+// Cria uma nova nuvem a cada 3 segundos
+setInterval(createCloud, 3000);
+
+
 function adivinhar() {
     let horario = new Date()
     let hora = horario.getHours()
