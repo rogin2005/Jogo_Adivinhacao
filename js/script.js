@@ -12,16 +12,89 @@ let endGame = false //controla se o jogo está ativo
 botaoadv.addEventListener('click', adivinhar)
 botaonew.addEventListener('click', novoJogo)
 
-palptxt.addEventListener('keydown', function(event) { //evento enter no campo de palpite chama adivinhar()
-    if(event.key === 'Enter') {
-        if(!endGame) {
+palptxt.addEventListener('keydown', function (event) { //evento enter no campo de palpite chama adivinhar()
+    if (event.key === 'Enter') {
+        if (!endGame) {
             adivinhar()
         }
     }
 })
 
+
+const audio = new Audio('../assets/azazel-cant-stop-coming.mp3');
+audio.loop = true;   // repetir infinitamente
+audio.volume = 0.5;  // volume inicial (0 a 1)
+
+let musicaAtiva = true;
+
+// Tenta tocar assim que carrega
+window.onload = function () {
+    audio.play().then(() => {
+        //console.log("Reprodução automática iniciada!");
+    }).catch(error => {
+        //console.log("Autoplay bloqueado pelo navegador. Aguardando interação.");
+
+        // Se bloqueado, adiciona um evento de clique para tocar
+        document.addEventListener('click', () => {
+            audio.play();
+            //console.log('reprodução iniciada manualmente')
+        }, { once: true }); // Executa apenas uma vez
+    });
+};
+
+// Vincular ao botão
+const btn = document.getElementById('toggle-music');
+btn.addEventListener('click', () => {
+    if (musicaAtiva) {
+        audio.pause();
+        btn.innerHTML = '&#x1F507'; // emoji silenciado
+    } else {
+        audio.play();
+        btn.innerHTML = '&#x1F50A'; // emoji volume alto
+    }
+    musicaAtiva = !musicaAtiva;
+});
+
+
 botaonew.disabled = true
 botaonew.style.display = 'none' //esconde o botão - 'none' esconde - 'block' mostra
+
+
+function createCloud() { // função cria nuvens
+  const sky = document.getElementById('sky');
+  const cloud = document.createElement('div');
+  cloud.className = 'cloud';
+  
+  // Tamanhos e posições aleatórias
+  const size = Math.random() * 150 + 100;
+  cloud.style.width = `${size}px`;
+  cloud.style.height = `${size * 0.6}px`;
+  cloud.style.top = `${Math.random() * 50}%`; // Nuvens na parte superior
+  cloud.style.left = `-200px`; // Começa fora da tela à esquerda
+
+  sky.appendChild(cloud);
+
+  // Animação com JS
+  let position = -200;
+  const speed = Math.random() * 1 + 0.5; // Velocidades variadas
+
+  function move() {
+    position += speed;
+    cloud.style.left = `${position}px`;
+
+    if (position < window.innerWidth) {
+      requestAnimationFrame(move);
+    } else {
+      cloud.remove(); // Remove ao sair da tela para poupar memória
+    }
+  }
+
+  move();
+}
+
+// Cria uma nova nuvem a cada 3 segundos
+setInterval(createCloud, 3000);
+
 
 function adivinhar() {
     let horario = new Date()
@@ -68,7 +141,7 @@ function adivinhar() {
             liHistorico.innerHTML = `&#x2B06 ${palpnum} (alto)`
         } else if (palpnum < pc) { // palpite baixo
             //hist.innerHTML += `<li>&#x2B07 ${palpnum} (baixo)</li>`
-            liHistorico.innerHTML = `&#x2B07 ${palpnum} (baixo)` 
+            liHistorico.innerHTML = `&#x2B07 ${palpnum} (baixo)`
         }
 
         // menor
