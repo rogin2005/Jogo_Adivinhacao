@@ -60,7 +60,7 @@ botaonew.disabled = true
 botaonew.style.display = 'none' //esconde o botão - 'none' esconde - 'block' mostra
 
 
-function createCloud() {
+function createCloud() { // função cria nuvens
   const sky = document.getElementById('sky');
   const cloud = document.createElement('div');
   cloud.className = 'cloud';
@@ -74,7 +74,7 @@ function createCloud() {
 
   sky.appendChild(cloud);
 
-  // Animação com JS (ou pode usar CSS Animations)
+  // Animação com JS
   let position = -200;
   const speed = Math.random() * 1 + 0.5; // Velocidades variadas
 
